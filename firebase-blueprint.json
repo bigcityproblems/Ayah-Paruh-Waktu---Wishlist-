@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "WishlistEntry": {
+      "title": "Wishlist Entry",
+      "description": "A book wishlist entry from a potential reader.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the user"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the user"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number or WhatsApp"
+        },
+        "instagram": {
+          "type": "string",
+          "description": "Instagram handle"
+        },
+        "tiktok": {
+          "type": "string",
+          "description": "TikTok handle"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the entry was created"
+        }
+      },
+      "required": ["name", "email", "phone", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/wishlist": {
+      "schema": "WishlistEntry",
+      "description": "Collection of book wishlist entries"
+    }
+  }
+}

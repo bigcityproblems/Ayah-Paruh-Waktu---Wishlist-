@@ -1,0 +1,44 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isValidWishlistEntry(data) {
+      return data.keys().hasAll(['name', 'email', 'phone', 'createdAt']) &&
+             data.keys().size() >= 4 && data.keys().size() <= 6 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 200 &&
+             data.email is string && data.email.size() > 0 && data.email.size() <= 200 &&
+             data.email.matches('^[^@]+@[^@]+\\.[^@]+$') &&
+             data.phone is string && data.phone.size() > 0 && data.phone.size() <= 50 &&
+             (data.get('instagram', '') == '' || (data.instagram is string && data.instagram.size() <= 100)) &&
+             (data.get('tiktok', '') == '' || (data.tiktok is string && data.tiktok.size() <= 100)) &&
+             data.createdAt == request.time;
+    }
+
+    match /wishlist/{entryId} {
+      // Allow creation by anyone (public wishlist)
+      // We don't require auth here to reduce friction for a book wishlist
+      allow create: if isValidWishlistEntry(incoming());
+      
+      // Deny read/list/update/delete to protect PII
+      allow read, write: if false;
+    }
+  }
+}

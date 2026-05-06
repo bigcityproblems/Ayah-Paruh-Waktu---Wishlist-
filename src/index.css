@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Karla:wght@200;300;400;500;600;700&family=Homemade+Apple&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Averia Serif Libre", serif;
+  --font-sans: "Karla", sans-serif;
+  --font-hand: "Homemade Apple", cursive;
+  
+  --color-paper: #FDFCF8;
+  --color-ink: #1A1A1A;
+  --color-terracotta: #A65D43;
+  --color-hero: #d67011;
+  --color-olive: #6A704C;
+  --color-sand: #EFEDE7;
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-sans selection:bg-terracotta/20;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .bg-grain {
+    position: relative;
+  }
+  
+  .bg-grain::before {
+    content: "";
+    @apply fixed inset-0 pointer-events-none opacity-[0.03] z-[9999];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
