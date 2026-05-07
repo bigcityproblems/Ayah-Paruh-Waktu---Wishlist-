@@ -403,7 +403,7 @@ export default function App() {
             {/* Book Image */}
             <div className="relative group w-full max-w-[280px] md:max-w-none">
               <img 
-                src="https://res.cloudinary.com/dkhf63xbe/image/upload/v1778053561/apwbook_chr7lq.png" 
+                src="https://res.cloudinary.com/dkhf63xbe/image/upload/v1778144319/apwbook-buku_wu1jpd.png" 
                 alt="Ayah Paruh Waktu Book Cover"
                 className="w-full h-auto rounded-sm shadow-[0_15px_40px_rgba(0,0,0,0.25)] relative z-10 transition-transform duration-700 group-hover:scale-[1.02]"
                 referrerPolicy="no-referrer"
