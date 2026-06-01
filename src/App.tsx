@@ -403,20 +403,12 @@ export default function App() {
             {/* Book Image */}
             <div className="relative group w-full max-w-[280px] md:max-w-none">
               <img 
-                src="https://res.cloudinary.com/dkhf63xbe/image/upload/v1778144319/apwbook-buku_wu1jpd.png" 
+                src="https://res.cloudinary.com/dkhf63xbe/image/upload/v1778053561/apwbook_chr7lq.png" 
                 alt="Ayah Paruh Waktu Book Cover"
                 className="w-full h-auto rounded-sm shadow-[0_15px_40px_rgba(0,0,0,0.25)] relative z-10 transition-transform duration-700 group-hover:scale-[1.02]"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-ink/20 blur-2xl translate-y-8 scale-90 -z-10 opacity-30" />
-            </div>
-
-            {/* Release Info */}
-            <div className="pt-8 space-y-4 flex flex-col items-center md:items-start text-center md:text-left w-full">
-              <div className="flex flex-col gap-0.5 items-center md:items-start">
-                <span className="text-[10px] uppercase tracking-widest text-ink/40">Tanggal Terbit</span>
-                <p className="text-xl md:text-2xl font-serif">Rilis 22 Juni 2026.</p>
-              </div>
             </div>
           </motion.div>
         </div>
